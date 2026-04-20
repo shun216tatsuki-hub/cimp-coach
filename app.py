@@ -4,19 +4,32 @@ import google.generativeai as genai
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
 # 👇 Streamlitの最新版に対応した強制非表示CSS
-hide_st_style = """
-            <style>
-            /* 1. 基本のフッター消去（念のため!importantで強制） */
-            footer {visibility: hidden !important;}
-            
-            /* 2. Streamlit特有のタグ（data-testid）を直接狙い撃ちにして完全に消す */
-            [data-testid="stFooter"] {display: none !important;}
-            
-            /* 3. デプロイ後に出る右下の変なバッジも消す */
-            .viewerBadge_container__1QSob {display: none !important;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_elements_style = """
+    <style>
+    /* 1. Streamlit Cloud バッジ (aタグ) を非表示 */
+    ._viewerBadge_nim44_23, 
+    a[href*="streamlit.io/cloud"] {
+        display: none !important;
+    }
+
+    /* 2. プロフィールコンテナを非表示 */
+    ._profileContainer_gzau3_53 {
+        display: none !important;
+    }
+
+    /* 3. プロフィールプレビューを非表示 */
+    ._profilePreview_gzau3_63 {
+        display: none !important;
+    }
+
+    /* ついでに標準のフッターやツールバーも消したい場合（必要に応じて） */
+    footer {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """
+
+st.markdown(hide_elements_style, unsafe_allow_html=True)
 
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
