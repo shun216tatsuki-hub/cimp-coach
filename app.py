@@ -2,6 +2,16 @@ import streamlit as st
 import google.generativeai as genai
 
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
+
+hide_st_style = """
+            <style>
+        
+            footer {visibility: hidden;}    /* 下のStreamlitロゴを消す */
+           
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
 
