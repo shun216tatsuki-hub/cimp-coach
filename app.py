@@ -3,16 +3,19 @@ import google.generativeai as genai
 
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
-# 👇 変数（hide_st_style）にCSSの中身を入れる
+# 👇 Streamlitの最新版に対応した強制非表示CSS
 hide_st_style = """
             <style>
-            footer {visibility: hidden;}
-            ._container_1tzhq_51 {visibility: hidden;} 
-            .viewerBadge_container__1QSob {display: none;}
+            /* 1. 基本のフッター消去（念のため!importantで強制） */
+            footer {visibility: hidden !important;}
+            
+            /* 2. Streamlit特有のタグ（data-testid）を直接狙い撃ちにして完全に消す */
+            [data-testid="stFooter"] {display: none !important;}
+            
+            /* 3. デプロイ後に出る右下の変なバッジも消す */
+            .viewerBadge_container__1QSob {display: none !important;}
             </style>
             """
-
-# 👇 その変数を使って、画面に反映させる（絶対に↑の後に書く！）
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.title("🎓 CIMP AI Marking")
