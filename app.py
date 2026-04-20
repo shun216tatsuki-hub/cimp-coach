@@ -13,7 +13,7 @@ hide_st_style = """
             """
 
 # 👇 その変数を使って、画面に反映させる（絶対に↑の後に書く！）
-st.markdown(hide_st_style, unsafe_allow_html=True
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
