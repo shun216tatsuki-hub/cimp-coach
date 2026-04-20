@@ -5,12 +5,11 @@ st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
 hide_st_style = """
             <style>
-        
+            #MainMenu {visibility: hidden;} /* 右上のメニューを消す */
             footer {visibility: hidden;}    /* 下のStreamlitロゴを消す */
-           
+            header {visibility: hidden;}    /* 上の余白を消す */
             </style>
             """
-st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
