@@ -3,15 +3,17 @@ import google.generativeai as genai
 
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
-hhide_st_style = """
+# 👇 変数（hide_st_style）にCSSの中身を入れる
+hide_st_style = """
             <style>
-            /* 下の "Made with Streamlit" を消す */
             footer {visibility: hidden;}
-            ._container_1tzhq_51 {visibility: hidden;} /* 最新版のフッタークラス名対策 */
-            .viewerBadge_container__1QSob {display: none;} /* デプロイ後にたまに出るバッジ対策 */
+            ._container_1tzhq_51 {visibility: hidden;} 
+            .viewerBadge_container__1QSob {display: none;}
             </style>
             """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
+# 👇 その変数を使って、画面に反映させる（絶対に↑の後に書く！）
+st.markdown(hide_st_style, unsafe_allow_html=True
 
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
