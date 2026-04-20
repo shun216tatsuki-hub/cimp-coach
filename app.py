@@ -7,7 +7,7 @@ st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 # CSSをここに集約
 st.markdown("""
     <style>
-    /* 1. 全ての邪魔な要素をクラス名の一部指定で抹殺 */
+  
     [class*="viewerBadge"],
     [class*="profileContainer"],
     [class*="profilePreview"],
@@ -20,18 +20,18 @@ st.markdown("""
         pointer-events: none !important;
     }
 
-    /* 2. フッター（Made with Streamlit）を完全に消す */
+   
     footer {
         display: none !important;
     }
 
-    /* 3. ヘッダー（右上の三本線とか）を消す */
+  
     header {
         visibility: hidden;
         height: 0;
     }
     
-    /* 4. アプリ下の余白を詰める */
+   
     .main .block-container {
         padding-bottom: 0rem !important;
     }
@@ -40,8 +40,7 @@ st.markdown("""
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
 
-# 【変更点】サイトの裏側（Secrets）から、君のAPIキーをこっそり読み込む
-# 友達にはキーの入力欄は見えない！
+
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
