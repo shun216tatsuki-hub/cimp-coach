@@ -1,41 +1,42 @@
 import streamlit as st
 import google.generativeai as genai
 
+# 設定は一番上
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
-import streamlit as st
-
+# CSSをここに集約
 st.markdown("""
     <style>
-    /* 1. クラス名の一部に "viewerBadge" や "profile" が含まれてるやつを根こそぎ非表示 */
+    /* 1. 全ての邪魔な要素をクラス名の一部指定で抹殺 */
     [class*="viewerBadge"],
     [class*="profileContainer"],
     [class*="profilePreview"],
+    [class*="StyledFooter"],
     a[href*="streamlit.io/cloud"] {
         display: none !important;
-        height: 0 !important;
-        width: 0 !important;
-        overflow: hidden !important;
+        opacity: 0 !important;
         visibility: hidden !important;
+        height: 0 !important;
+        pointer-events: none !important;
     }
 
-    /* 2. それらが乗っかってる親のフッター領域も完全に潰す */
+    /* 2. フッター（Made with Streamlit）を完全に消す */
     footer {
         display: none !important;
     }
 
-    /* 3. 右上のツールバー（デプロイボタンとか）も消したいならこれ */
-    header[data-testid="stHeader"] {
-        display: none !important;
+    /* 3. ヘッダー（右上の三本線とか）を消す */
+    header {
+        visibility: hidden;
+        height: 0;
     }
-
-    /* 4. 万が一まだ残るなら、一番外側のコンテナを調整 */
-    #root > div:nth-child(1) > div > div > div > div > section > div {
-        padding-bottom: 0 !important;
+    
+    /* 4. アプリ下の余白を詰める */
+    .main .block-container {
+        padding-bottom: 0rem !important;
     }
     </style>
-    """, unsafe_allow_html=True)
-
+    """, unsafe_allow_html=True)　
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
 
