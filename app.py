@@ -3,33 +3,38 @@ import google.generativeai as genai
 
 st.set_page_config(page_title="CIMP AI Coach", layout="centered")
 
-# 👇 Streamlitの最新版に対応した強制非表示CSS
-hide_elements_style = """
+import streamlit as st
+
+st.markdown("""
     <style>
-    /* 1. Streamlit Cloud バッジ (aタグ) を非表示 */
-    ._viewerBadge_nim44_23, 
+    /* 1. クラス名の一部に "viewerBadge" や "profile" が含まれてるやつを根こそぎ非表示 */
+    [class*="viewerBadge"],
+    [class*="profileContainer"],
+    [class*="profilePreview"],
     a[href*="streamlit.io/cloud"] {
         display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
     }
 
-    /* 2. プロフィールコンテナを非表示 */
-    ._profileContainer_gzau3_53 {
+    /* 2. それらが乗っかってる親のフッター領域も完全に潰す */
+    footer {
         display: none !important;
     }
 
-    /* 3. プロフィールプレビューを非表示 */
-    ._profilePreview_gzau3_63 {
+    /* 3. 右上のツールバー（デプロイボタンとか）も消したいならこれ */
+    header[data-testid="stHeader"] {
         display: none !important;
     }
 
-    /* ついでに標準のフッターやツールバーも消したい場合（必要に応じて） */
-    footer {visibility: hidden;}
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
+    /* 4. 万が一まだ残るなら、一番外側のコンテナを調整 */
+    #root > div:nth-child(1) > div > div > div > div > section > div {
+        padding-bottom: 0 !important;
+    }
     </style>
-    """
-
-st.markdown(hide_elements_style, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
