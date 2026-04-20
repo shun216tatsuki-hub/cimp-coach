@@ -36,7 +36,7 @@ st.markdown("""
         padding-bottom: 0rem !important;
     }
     </style>
-    """, unsafe_allow_html=True)　
+    """, unsafe_allow_html=True)
 st.title("🎓 CIMP AI Marking")
 st.write("Grade your work and gives you advice to achieve higher grade!")
 
